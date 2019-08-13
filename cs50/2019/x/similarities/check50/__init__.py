@@ -166,3 +166,11 @@ class Similarities(Checks):
         a = "foobarbaz"
         b = "barbaz"
         self.check_strings("substrings", a, b, {"ba", "ar", "rb", "az"}, length=2)
+        
+    @check("compiles")
+    def substrings_nonalpha(self):
+        """handles substrings containing nonalpha chars"""
+        a = "foo bar baz"
+        b = "foo barbaz"
+        self.check_strings("substrings", a, b, {"foo b", "oo ba", "o bar"}, length=5)
+    
